@@ -13,19 +13,73 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#F0F0A0"
         tools:context=".MemeFragment">
 
-
-        <ImageView
-            android:id="@+id/image_view"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:imageUrl="@{viewModel.response.url}"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="350dp"
+            android:layout_margin="16dp"
+            android:padding="8dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@tools:sample/backgrounds/scenic" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/meme_image_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="false"
+                android:padding="8dp"
+                android:scaleType="centerInside"
+                app:imageUrl="@{viewModel.response.url}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/backgrounds/scenic" />
+        </androidx.cardview.widget.CardView>
+
+        <ImageView
+            android:id="@+id/like_image_view"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/ic_thumb_up"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/card_view" />
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="center"
+            android:text="@{Integer.toString(viewModel.response.ups)}"
+            android:textColor="@color/black"
+            android:textSize="40sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/like_image_view"
+            app:layout_constraintTop_toBottomOf="@id/card_view"
+            tools:text="999" />
+
+        <Button
+            android:id="@+id/next_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:onClick="@{()->viewModel.nextMeme()}"
+            android:text="Next"
+            android:textSize="40sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/like_image_view" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

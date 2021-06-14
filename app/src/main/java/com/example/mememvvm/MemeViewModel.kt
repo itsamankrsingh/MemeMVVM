@@ -22,4 +22,8 @@ class MemeViewModel() : ViewModel() {
             _response.value = MemeApi.retrofitService.getMeme()
         }
     }
+
+    fun nextMeme(){
+        getMeme()
+    }
 }
