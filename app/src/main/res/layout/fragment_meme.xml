@@ -15,6 +15,7 @@
         android:layout_height="match_parent"
         tools:context=".MemeFragment">
 
+
         <androidx.cardview.widget.CardView
             android:id="@+id/card_view"
             android:layout_width="0dp"
@@ -27,6 +28,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
+
             <ImageView
                 android:id="@+id/meme_image_view"
                 android:layout_width="match_parent"
@@ -35,6 +37,7 @@
                 android:padding="8dp"
                 android:scaleType="centerInside"
                 app:imageUrl="@{viewModel.response.url}"
+                app:memeApiStatus="@{viewModel.status}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
