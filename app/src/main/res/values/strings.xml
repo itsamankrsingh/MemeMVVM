@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">MemeMVVM</string>
+    <string name="app_name">MemesMVVM</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="next">Next</string>
+    <string name="share">Share</string>
 </resources>

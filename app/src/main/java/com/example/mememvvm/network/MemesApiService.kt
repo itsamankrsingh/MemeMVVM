@@ -18,13 +18,13 @@ private val retrofit = Retrofit.Builder()
     .baseUrl(BASE_URL)
     .build()
 
-interface MemeApiService {
+interface MemesApiService {
     @GET("gimme")
-   suspend fun getMeme(): Meme
+   suspend fun getMemes(): Memes
 }
 
-object MemeApi {
-    val retrofitService: MemeApiService by lazy {
-        retrofit.create(MemeApiService::class.java)
+object MemesApi {
+    val retrofitService: MemesApiService by lazy {
+        retrofit.create(MemesApiService::class.java)
     }
 }

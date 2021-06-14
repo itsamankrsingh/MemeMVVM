@@ -1,6 +1,6 @@
 package com.example.mememvvm.network
 
-data class Meme(
+data class Memes(
     val author: String,
     val nsfw: Boolean,
     val postLink: String,

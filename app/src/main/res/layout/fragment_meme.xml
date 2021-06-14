@@ -7,13 +7,16 @@
 
         <variable
             name="viewModel"
-            type="com.example.mememvvm.MemeViewModel" />
+            type="com.example.mememvvm.memes.MemeViewModel" />
     </data>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MemeFragment">
+        android:layout_height="wrap_content"
+        tools:context=".memes.MemesFragment">
 
 
         <androidx.cardview.widget.CardView
@@ -77,12 +80,13 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:onClick="@{()->viewModel.nextMeme()}"
-            android:text="Next"
+            android:onClick="@{()->viewModel.nextMemes()}"
+            android:text="@string/next"
             android:textSize="40sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/like_image_view" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>
