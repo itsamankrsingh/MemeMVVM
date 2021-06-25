@@ -13,7 +13,13 @@ class FavouritesAdapter() :
     ListAdapter<MemesEntity, FavouritesAdapter.FavouritesViewHolder>(DiffCallBack) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavouritesViewHolder {
-        return FavouritesViewHolder(MemesListItemBinding.inflate(LayoutInflater.from(parent.context)))
+        return FavouritesViewHolder(
+            MemesListItemBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: FavouritesViewHolder, position: Int) {
