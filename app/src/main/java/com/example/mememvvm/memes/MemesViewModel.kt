@@ -1,19 +1,22 @@
 package com.example.mememvvm.memes
 
+import android.app.Application
 import android.content.Context
 import android.content.Intent
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.example.mememvvm.network.Memes
+import android.widget.Toast
+import androidx.lifecycle.*
+import com.example.mememvvm.database.MemesDao
+import com.example.mememvvm.database.MemesEntity
 import com.example.mememvvm.network.MemesApi
+import com.example.mememvvm.network.Memes
 import kotlinx.coroutines.launch
 
 
 enum class MemeApiStatus { LOADING, ERROR, DONE }
 
-class MemeViewModel() : ViewModel() {
+class MemeViewModel(private val databaseSource: MemesDao, application: Application) :
+    AndroidViewModel(application) {
+
     private val _response = MutableLiveData<Memes>()
     val response: LiveData<Memes>
         get() = _response
@@ -21,6 +24,8 @@ class MemeViewModel() : ViewModel() {
     private val _status = MutableLiveData<MemeApiStatus>()
     val status: LiveData<MemeApiStatus>
         get() = _status
+
+
 
     init {
         getMemes()
@@ -51,4 +56,20 @@ class MemeViewModel() : ViewModel() {
         val chooser = Intent.createChooser(intent, "Share this meme using...")
         context?.startActivity(chooser)
     }
+
+    fun addToFavourites() {
+        val memesEntity: MemesEntity = MemesEntity(
+            _response.value!!.author,
+            _response.value!!.title,
+            _response.value!!.ups,
+            _response.value!!.url
+        )
+        viewModelScope.launch {
+            databaseSource.insert(memesEntity)
+            Toast.makeText(getApplication(), "Added To Favourites", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+
+
 }
