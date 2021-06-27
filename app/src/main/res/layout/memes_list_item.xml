@@ -8,6 +8,10 @@
         <variable
             name="memes"
             type="com.example.mememvvm.database.MemesEntity" />
+
+        <variable
+            name="clicklistener"
+            type="com.example.mememvvm.favourites.MemesEntityClickListener" />
     </data>
 
 
@@ -16,6 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
+        android:onClick="@{()->clicklistener.onClick(memes)}"
         app:cardCornerRadius="8dp"
         app:cardElevation="4dp"
         app:contentPaddingBottom="16dp">

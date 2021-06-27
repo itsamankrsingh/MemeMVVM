@@ -23,4 +23,10 @@ class FavouritesViewModel(private val dataSource: MemesDao) : ViewModel() {
             _memesList.value = dataSource.getAllMemes()
         }
     }
+
+    fun delete(memes: MemesEntity) {
+        viewModelScope.launch {
+            dataSource.delete(memes)
+        }
+    }
 }
