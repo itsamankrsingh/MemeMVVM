@@ -8,63 +8,67 @@
         <variable
             name="memes"
             type="com.example.mememvvm.database.MemesEntity" />
+
+        <variable
+            name="clicklistener"
+            type="com.example.mememvvm.favourites.MemesEntityClickListener" />
     </data>
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:onClick="@{()->clicklistener.onClick(memes)}"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:contentPaddingBottom="16dp">
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card_view"
-            android:layout_width="0dp"
-            android:layout_height="350dp"
-            android:layout_margin="16dp"
-            android:padding="8dp"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
 
             <ImageView
                 android:id="@+id/meme_image_view"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="0dp"
                 android:adjustViewBounds="false"
                 android:padding="8dp"
-                android:scaleType="centerInside"
+                android:scaleType="fitXY"
                 app:imageUrl="@{memes.url}"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="H,16:9"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
 
                 tools:src="@tools:sample/backgrounds/scenic" />
-        </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/recycler_view_like_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:drawablePadding="8dp"
+                android:fontFamily="@font/acme"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="@{Integer.toString(memes.ups)}"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="italic"
+                app:drawableStartCompat="@drawable/ic_thumb_up"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/meme_image_view"
+                tools:text="999" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/recycler_view_like_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:drawablePadding="8dp"
-            android:fontFamily="@font/acme"
-            android:gravity="center"
-            android:padding="8dp"
-            android:text="@{Integer.toString(memes.ups)}"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="italic"
-            app:drawableStartCompat="@drawable/ic_thumb_up"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/card_view"
-            tools:text="999" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
 
 </layout>

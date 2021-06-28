@@ -10,7 +10,7 @@
         tools:context=".favourites.FavouritesFragment">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:layout_margin="16dp"
+            android:layout_margin="8dp"
             android:id="@+id/fav_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

@@ -18,9 +18,11 @@ class FavouritesViewModel(private val dataSource: MemesDao) : ViewModel() {
         getAllMemes()
     }
 
-    fun getAllMemes() {
+    private fun getAllMemes() {
         viewModelScope.launch {
             _memesList.value = dataSource.getAllMemes()
         }
     }
+
+
 }

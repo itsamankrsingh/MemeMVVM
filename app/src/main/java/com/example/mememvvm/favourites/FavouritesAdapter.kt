@@ -9,16 +9,22 @@ import com.example.mememvvm.database.MemesEntity
 import com.example.mememvvm.databinding.MemesListItemBinding
 
 
-class FavouritesAdapter() :
+class FavouritesAdapter(val clicklistener: MemesEntityClickListener) :
     ListAdapter<MemesEntity, FavouritesAdapter.FavouritesViewHolder>(DiffCallBack) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavouritesViewHolder {
-        return FavouritesViewHolder(MemesListItemBinding.inflate(LayoutInflater.from(parent.context)))
+        return FavouritesViewHolder(
+            MemesListItemBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: FavouritesViewHolder, position: Int) {
         val memes = getItem(position)
-        holder.bind(memes)
+        holder.bind(memes,clicklistener)
     }
 
     companion object DiffCallBack : DiffUtil.ItemCallback<MemesEntity>() {
@@ -34,11 +40,17 @@ class FavouritesAdapter() :
 
     class FavouritesViewHolder(private var binding: MemesListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(memes: MemesEntity) {
+        fun bind(memes: MemesEntity, clicklistener: MemesEntityClickListener) {
             //binding.recyclerViewLikeTextView.text = memes.ups.toString()
             //Glide.with()
             binding.memes = memes
+            binding.clicklistener = clicklistener
             binding.executePendingBindings()
         }
     }
 }
+
+class MemesEntityClickListener(val clicklistener: (memes:MemesEntity) -> Unit) {
+    fun onClick(memes: MemesEntity) = clicklistener(memes)
+}
+
