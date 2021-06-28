@@ -53,3 +53,4 @@ class FavouritesAdapter(val clicklistener: MemesEntityClickListener) :
 class MemesEntityClickListener(val clicklistener: (memes:MemesEntity) -> Unit) {
     fun onClick(memes: MemesEntity) = clicklistener(memes)
 }
+

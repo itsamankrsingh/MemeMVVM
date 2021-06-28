@@ -2,6 +2,7 @@ package com.example.mememvvm.database
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 
 @Entity(tableName = "memes_table")
@@ -12,7 +13,5 @@ data class MemesEntity constructor(
     val title: String,
     val ups: Int,
     val url: String
-) {
-
-}
+):Serializable
 

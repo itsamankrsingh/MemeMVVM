@@ -1,15 +1,19 @@
 package com.example.mememvvm.favourites
 
+import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.mememvvm.R
 import com.example.mememvvm.database.MemesDatabase
+import com.example.mememvvm.database.MemesEntity
 import com.example.mememvvm.databinding.FragmentFavouritesBinding
 
 
@@ -17,6 +21,7 @@ class FavouritesFragment : Fragment() {
 
     private lateinit var binding: FragmentFavouritesBinding
     private lateinit var viewModel: FavouritesViewModel
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,10 +37,8 @@ class FavouritesFragment : Fragment() {
 
 
         val adapter = FavouritesAdapter(MemesEntityClickListener { memes ->
-            Toast.makeText(context, "Memes deleted successfully", Toast.LENGTH_LONG)
-                .show()
-            viewModel.delete(memes)
-            viewModel.getAllMemes()
+
+            deleteMemes(memes)
         })
         binding.favRecyclerView.adapter = adapter
 
@@ -54,5 +57,15 @@ class FavouritesFragment : Fragment() {
         return binding.root
     }
 
+    private fun deleteMemes(memes: MemesEntity) {
 
+        val bundle = Bundle().apply {
+            putSerializable("memes", memes)
+        }
+        findNavController().navigate(R.id.action_favouritesFragment_to_detailsFragment, bundle)
+
+
+
+
+    }
 }

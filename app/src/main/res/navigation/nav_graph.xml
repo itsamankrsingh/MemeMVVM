@@ -14,5 +14,22 @@
         android:id="@+id/favouritesFragment"
         android:name="com.example.mememvvm.favourites.FavouritesFragment"
         android:label="FavouritesFragment"
-        tools:layout="@layout/fragment_favourites" />
+        tools:layout="@layout/fragment_favourites">
+        <action
+            android:id="@+id/action_favouritesFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.example.mememvvm.details.DetailsFragment"
+        android:label="DetailsFragment"
+        tools:layout="@layout/fragment_details" >
+        <argument
+            android:name="memes"
+            app:argType="com.example.mememvvm.database.MemesEntity" />
+        <action
+            android:id="@+id/action_detailsFragment_to_memesFragment"
+            app:destination="@id/memesFragment" />
+    </fragment>
+
 </navigation>

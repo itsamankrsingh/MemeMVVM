@@ -12,7 +12,7 @@ interface MemesDao {
     @Insert
     suspend fun insert(memesEntity: MemesEntity)
 
-    @Query("SELECT * FROM memes_table ")
+    @Query("SELECT * FROM memes_table")
     suspend fun getAllMemes(): List<MemesEntity>
 
     @Delete
