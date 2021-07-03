@@ -8,12 +8,12 @@
     <fragment
         android:id="@+id/memesFragment"
         android:name="com.example.mememvvm.memes.MemesFragment"
-        android:label="MemesFragment"
+        android:label="Memes"
         tools:layout="@layout/fragment_meme" />
     <fragment
         android:id="@+id/favouritesFragment"
         android:name="com.example.mememvvm.favourites.FavouritesFragment"
-        android:label="FavouritesFragment"
+        android:label="Favourites"
         tools:layout="@layout/fragment_favourites">
         <action
             android:id="@+id/action_favouritesFragment_to_detailsFragment"
@@ -22,7 +22,7 @@
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.example.mememvvm.details.DetailsFragment"
-        android:label="DetailsFragment"
+        android:label="Details"
         tools:layout="@layout/fragment_details" >
         <argument
             android:name="memes"

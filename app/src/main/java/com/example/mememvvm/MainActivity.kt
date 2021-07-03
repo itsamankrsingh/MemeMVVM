@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.mememvvm.databinding.ActivityMainBinding
 
@@ -21,5 +22,6 @@ class MainActivity : AppCompatActivity() {
 
 
         binding.bottomNavigationView.setupWithNavController(findNavController(R.id.fragment_container_view))
+        setupActionBarWithNavController(findNavController(R.id.fragment_container_view))
     }
 }

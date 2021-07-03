@@ -7,8 +7,8 @@ import java.io.Serializable
 
 @Entity(tableName = "memes_table")
 data class MemesEntity constructor(
-    @PrimaryKey
-    //val id: Long,
+    @PrimaryKey(autoGenerate = true)
+    val id: Int,
     val author: String,
     val title: String,
     val ups: Int,

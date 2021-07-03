@@ -37,7 +37,6 @@ class FavouritesFragment : Fragment() {
 
 
         val adapter = FavouritesAdapter(MemesEntityClickListener { memes ->
-
             deleteMemes(memes)
         })
         binding.favRecyclerView.adapter = adapter

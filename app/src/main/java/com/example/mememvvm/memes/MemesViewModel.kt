@@ -26,7 +26,6 @@ class MemeViewModel(private val databaseSource: MemesDao, application: Applicati
         get() = _status
 
 
-
     init {
         getMemes()
     }
@@ -59,6 +58,7 @@ class MemeViewModel(private val databaseSource: MemesDao, application: Applicati
 
     fun addToFavourites() {
         val memesEntity: MemesEntity = MemesEntity(
+            0,
             _response.value!!.author,
             _response.value!!.title,
             _response.value!!.ups,
@@ -69,7 +69,6 @@ class MemeViewModel(private val databaseSource: MemesDao, application: Applicati
             Toast.makeText(getApplication(), "Added To Favourites", Toast.LENGTH_SHORT).show()
         }
     }
-
 
 
 }
