@@ -17,6 +17,10 @@
         tools:layout="@layout/fragment_favourites">
         <action
             android:id="@+id/action_favouritesFragment_to_detailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:destination="@id/detailsFragment" />
     </fragment>
     <fragment
@@ -29,6 +33,10 @@
             app:argType="com.example.mememvvm.database.MemesEntity" />
         <action
             android:id="@+id/action_detailsFragment_to_memesFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:destination="@id/memesFragment" />
     </fragment>
 
