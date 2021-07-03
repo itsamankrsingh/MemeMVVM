@@ -24,4 +24,9 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigationView.setupWithNavController(findNavController(R.id.fragment_container_view))
         setupActionBarWithNavController(findNavController(R.id.fragment_container_view))
     }
+
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(R.id.fragment_container_view)
+        return navController.navigateUp() || super.onSupportNavigateUp()
+    }
 }
