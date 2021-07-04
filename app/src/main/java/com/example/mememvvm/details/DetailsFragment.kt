@@ -65,4 +65,5 @@ class DetailsFragment : Fragment() {
         return true
     }
 
+
 }
