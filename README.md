@@ -6,3 +6,10 @@ and Glide to load and cache images by URL.
 
 The app also leverages ViewModel, LiveData and Data Binding with binding adapters.
 This app also provide option to share your current meme with your friends.
+
+![](Images/image_01.jpg)
+![](Images/image_02.jpg)
+![](Images/image_03.jpg)
+![](Images/image_04.jpg)
+![](Images/image_05.jpg)
+
